@@ -1,0 +1,28 @@
+name: analyze-route-utilization
+description: Measure route deviation and utilization against a planned trip distance.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    vehicle_id: {type: string}
+    planned_distance_km: {type: number}
+    actual_distance_km: {type: number}
+  required: [vehicle_id, planned_distance_km, actual_distance_km]
+output_schema:
+  type: object
+  properties:
+    vehicle_id: {type: string}
+    planned_distance_km: {type: number}
+    actual_distance_km: {type: number}
+    distance_deviation_percent: {type: number}
+    route_utilization_percent: {type: number}
+    status: {type: string}
+implementation:
+  type: script
+  path: analyze-route-utilization.py
+  runtime: python3
+  timeout: 30
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low

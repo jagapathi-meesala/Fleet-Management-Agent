@@ -1,0 +1,28 @@
+name: calculate-fleet-health
+description: Calculate a deterministic vehicle health score from operational indicators.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    vehicle_id: {type: string}
+    odometer_km: {type: number}
+    engine_hours: {type: number}
+    fault_count: {type: number}
+    days_since_service: {type: number}
+  required: [vehicle_id, odometer_km, engine_hours, fault_count, days_since_service]
+output_schema:
+  type: object
+  properties:
+    vehicle_id: {type: string}
+    health_score: {type: number}
+    status: {type: string}
+    factors: {type: object}
+implementation:
+  type: script
+  path: calculate-fleet-health.py
+  runtime: python3
+  timeout: 30
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low

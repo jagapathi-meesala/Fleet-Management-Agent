@@ -1,0 +1,29 @@
+name: plan-maintenance
+description: Determine whether a vehicle is due or approaching scheduled maintenance.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    vehicle_id: {type: string}
+    odometer_km: {type: number}
+    days_since_service: {type: number}
+    service_interval_km: {type: number}
+    service_interval_days: {type: number}
+  required: [vehicle_id, odometer_km, days_since_service]
+output_schema:
+  type: object
+  properties:
+    vehicle_id: {type: string}
+    maintenance_due: {type: boolean}
+    next_service_km: {type: number}
+    days_until_service: {type: number}
+    reason: {type: string}
+implementation:
+  type: script
+  path: plan-maintenance.py
+  runtime: python3
+  timeout: 30
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low

@@ -1,0 +1,33 @@
+name: summarize-fleet
+description: Produce an aggregate fleet health and fuel summary from validated vehicle records.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    vehicles:
+      type: array
+      items:
+        type: object
+        properties:
+          vehicle_id: {type: string}
+          health_score: {type: number}
+          fuel_l_per_100km: {type: number}
+        required: [vehicle_id, health_score, fuel_l_per_100km]
+  required: [vehicles]
+output_schema:
+  type: object
+  properties:
+    vehicle_count: {type: integer}
+    average_health_score: {type: number}
+    average_fuel_l_per_100km: {type: number}
+    vehicles_requiring_attention: {type: integer}
+    vehicles_on_watch: {type: integer}
+implementation:
+  type: script
+  path: summarize-fleet.py
+  runtime: python3
+  timeout: 30
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low
