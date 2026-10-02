@@ -1,0 +1,26 @@
+spec_version: "0.1.0"
+name: fleet-management-agent
+version: 1.0.0
+description: A framework-independent agent for fleet health, maintenance planning, fuel efficiency, route utilization, and fleet summaries.
+license: MIT
+skills:
+  - fleet-monitoring
+  - maintenance-planning
+  - fleet-analytics
+tools:
+  - calculate-fleet-health
+  - plan-maintenance
+  - analyze-fuel-efficiency
+  - analyze-route-utilization
+  - summarize-fleet
+runtime:
+  max_turns: 20
+  timeout: 30
+tags:
+  - fleet-management
+  - vehicle-operations
+  - maintenance
+  - analytics
+metadata:
+  domain: fleet-operations
+  framework_independent: true
